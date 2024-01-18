@@ -30,6 +30,8 @@ When the user clicks on a note in the left-hand column, the information appears 
 
 ## Credits
 
+Starter Code: https://git.bootcampcontent.com/UNC-Charlotte/UNCC-VIRT-FSF-FT-12-2023-U-LOLC 
+
 Developer: Natalie Yaspo
 
 Collaboration:
