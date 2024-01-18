@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const uuid = require('./helpers/uuid');
 
 const PORT = 3001;
 
@@ -18,12 +19,9 @@ app.get('/', (req, res) =>
 
 // GET request for Notes
 app.get('/notes', (req, res) => {
-    // Send a message to the client
-    res.status(200).json(`${req.method} request received to get Notes`);
-  
-    // Log our request to the terminal
-    console.info(`${req.method} request received to get Notes`); //Can remove if it works
-  });
+    // Sends to notes.html when Get Started is clicked.
+    res.sendFile(path.join(__dirname, './public/notes.html'))
+});
 
 // POST request to add a Note
 app.post('/api/notes', (req, res) => {
@@ -39,10 +37,11 @@ app.post('/api/notes', (req, res) => {
       const newNote = {
         title,
         text,
+        review_id: uuid(),
       };
   
       // Obtain existing Notes
-      fs.readFile('./db/reviews.json', 'utf8', (err, data) => {
+      fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
         } else {
@@ -54,12 +53,12 @@ app.post('/api/notes', (req, res) => {
   
           // Write updated Notes back to the file
           fs.writeFile(
-            './db/reviews.json',
+            './db/db.json',
             JSON.stringify(parsedNotes, null, 4),
             (writeErr) =>
               writeErr
                 ? console.error(writeErr)
-                : console.info('Successfully updated reviews!')
+                : console.info('Successfully updated Notes!')
           );
         }
       });
@@ -72,7 +71,7 @@ app.post('/api/notes', (req, res) => {
       console.log(response);
       res.status(201).json(response);
     } else {
-      res.status(500).json('Error in posting review');
+      res.status(500).json('Error in posting Note');
     }
   });
   
