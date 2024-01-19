@@ -2,13 +2,18 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const uuid = require('./helpers/uuid');
+const notes = require('./db/db.json');
+// const bodyParser = require('body-parser');
 
 const PORT = 3001;
 
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
+
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
@@ -17,16 +22,20 @@ app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
-// GET request for Notes
+// GET request for Notes.html
 app.get('/notes', (req, res) => {
     // Sends to notes.html when Get Started is clicked.
-    res.sendFile(path.join(__dirname, './public/notes.html'))
+    res.sendFile(path.join(__dirname, 'public/notes.html'))
+});
+
+app.get('/api/notes', (req, res) => {
+  res.json(notes)
 });
 
 // POST request to add a Note
 app.post('/api/notes', (req, res) => {
     // Log that a POST request was received
-    console.info(`${req.method} request received to add a Note`);//Can remove if it works
+    console.info(`${req.method} request received to add a Note`);//WORKS
   
     // Destructuring assignment for the items in req.body
     const { title,  text } = req.body;
@@ -37,7 +46,7 @@ app.post('/api/notes', (req, res) => {
       const newNote = {
         title,
         text,
-        review_id: uuid(),
+        noteId: uuid(),
       };
   
       // Obtain existing Notes
