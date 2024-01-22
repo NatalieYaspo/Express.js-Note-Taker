@@ -8,5 +8,10 @@
         "title": "test note 2",
         "text": "two two two",
         "note_id": "38d6"
+    },
+    {
+        "title": "Testing New Note",
+        "text": "This is a new note test.",
+        "note_id": "6379"
     }
 ]
