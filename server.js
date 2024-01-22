@@ -3,38 +3,21 @@ const path = require('path');
 const fs = require('fs');
 const uuid = require('./helpers/uuid');
 const notes = require('./db/db.json');
-// const livereload = require('livereload');
-// const connectLiveReload = require('connect-livereload')
-// const api = require('./routes/notes.js');
+
 const {
   readFromFile,
   writeToFile,
   readAndAppend,
 } = require('./helpers/fsUtils');
 
-// const liveReloadServer = livereload.createServer();
-// liveReloadServer.watch(path.join(__dirname, 'public/notes.html'));
-
 const PORT = process.env.PORT || 3003;
 
 const app = express();
 
-// app.use(connectLiveReload());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use('/api', api);
 
 app.use(express.static('public'));
-
-
-//Reload server to refresh page with new notes/deleted notes //All of this isn't working
-// liveReloadServer.server.once("connection", () => {
-//   setTimeout(() => {
-//     liveReloadServer.refresh("/");
-//   }, 100);
-// });
-
 
 //GET request to homepage for app
 app.get('/', (req, res) =>
@@ -49,7 +32,6 @@ app.get('/notes', (req, res) => {
 
 //Shows all active notes
 app.get('/api/notes', (req, res) => {
-  // res.json(notes);
   readFromFile('./db/db.json')
     .then(res.json(notes));
 });
@@ -97,7 +79,7 @@ app.delete('/api/notes/:note_id', (req, res) => {
   // Log that a DELETE request was received
   console.info(`${req.method} request received to delete a Note`);//It sees this.
   const noteID = req.params.note_id;
-  console.log(req.params.note_id); //Undefined
+  // console.log(req.params.note_id); //Works!
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
