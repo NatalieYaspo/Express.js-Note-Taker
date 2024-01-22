@@ -15,7 +15,7 @@ const {
 // const liveReloadServer = livereload.createServer();
 // liveReloadServer.watch(path.join(__dirname, 'public/notes.html'));
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3003;
 
 const app = express();
 
