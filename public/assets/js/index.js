@@ -57,7 +57,7 @@ const renderActiveNote = () => {
   hide(saveNoteBtn);
   hide(clearBtn);
 
-  if (activeNote.id) {
+  if (activeNote.note_id) {
     show(newNoteBtn);
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
@@ -81,7 +81,6 @@ const handleNoteSave = () => {
     getAndRenderNotes();
     renderActiveNote();
   });
-  location.reload(); //This isn't working...
 };
 
 // Delete the clicked note
@@ -100,11 +99,11 @@ const handleNoteDelete = (e) => {
     getAndRenderNotes();
     renderActiveNote();
   });
-  location.reload(); //This isn't working...
 };
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
+  // console.log("Note", e.target.parentElement.getAttribute('data-note')); //sees the correct note
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
@@ -181,6 +180,7 @@ const renderNoteList = async (notes) => {
   if (window.location.pathname === '/notes') {
     noteListItems.forEach((note) => noteList[0].append(note));
   }
+
 };
 
 // Gets notes from the db and renders them to the sidebar

@@ -47,7 +47,7 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/notes.html'))
 });
 
-//Shows active notes
+//Shows all active notes
 app.get('/api/notes', (req, res) => {
   // res.json(notes);
   readFromFile('./db/db.json')
@@ -88,7 +88,7 @@ app.post('/api/notes', (req, res) => {
     readAndAppend(newNote, './db/db.json');
     res.json(`Note added successfully`);
   } else {
-    res.errored('Error in adding note');
+    res.error('Error in adding note');
   }
 });
 

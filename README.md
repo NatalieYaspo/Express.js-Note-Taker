@@ -35,10 +35,7 @@ Starter Code: https://git.bootcampcontent.com/UNC-Charlotte/UNCC-VIRT-FSF-FT-12-
 Developer: Natalie Yaspo
 
 Collaboration:
-- 
-
-Tutorials:
-- 
+- Le, Roger via Zoom 22 Jan, 2024
 
 ## License
 
