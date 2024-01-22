@@ -1,17 +1,12 @@
 [
     {
-        "title": "Test note",
-        "text": "test test",
-        "note_id": "1552"
-    },
-    {
-        "title": "Test note 2",
-        "text": "testing note 2\n",
-        "note_id": "28ec"
-    },
-    {
         "title": "Note 3",
         "text": "testing",
         "note_id": "b4f2"
+    },
+    {
+        "title": "test note 2",
+        "text": "two two two",
+        "note_id": "38d6"
     }
 ]

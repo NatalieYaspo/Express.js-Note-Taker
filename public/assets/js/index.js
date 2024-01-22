@@ -81,6 +81,7 @@ const handleNoteSave = () => {
     getAndRenderNotes();
     renderActiveNote();
   });
+  location.reload(); //This isn't working...
 };
 
 // Delete the clicked note
@@ -89,7 +90,7 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).note_id;
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -99,6 +100,7 @@ const handleNoteDelete = (e) => {
     getAndRenderNotes();
     renderActiveNote();
   });
+  location.reload(); //This isn't working...
 };
 
 // Sets the activeNote and displays it
