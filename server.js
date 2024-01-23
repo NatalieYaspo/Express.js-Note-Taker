@@ -53,7 +53,7 @@ app.get('/:note_id', (req, res) => {
 app.post('/api/notes', (req, res) => {
   // Log that a POST request was received
   console.info(`${req.method} request received to add a Note`);//WORKS
-
+  console.log(req.body);
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
 
