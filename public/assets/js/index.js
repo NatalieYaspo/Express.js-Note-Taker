@@ -77,7 +77,7 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value
   };
-  // console.log(newNote);
+  // console.log(newNote); //Heroku logs it, but it goes nowhere. Clears when refreshed.
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
@@ -90,9 +90,9 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
-  console.log(e.target)
+  // console.log(e.target) //Works the same for both local and heroku
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).note_id;
-  console.log(JSON.parse(note.parentElement.getAttribute('data-note')).note_id);
+  console.log(JSON.parse(note.parentElement.getAttribute('data-note')).note_id); //local reads this, but Heroku doesn't
   if (activeNote.id === noteId) {
     activeNote = {};
   }

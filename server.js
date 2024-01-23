@@ -10,7 +10,7 @@ const {
   readAndAppend,
 } = require('./helpers/fsUtils');
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
